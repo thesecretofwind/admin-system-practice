@@ -1,0 +1,35 @@
+<p>login works!</p>
+<div class="container" fxLayoutAlign="center center ">
+  <div
+    class="panel"
+    fxLayout="column"
+    fxLayoutAlign="center center "
+    fxLayoutWrap
+  >
+    <div class="panel-header">
+      <h1 class="text-center">Admin System</h1>
+    </div>
+    <div class="panel-body">
+      <form fxLayout="column" [formGroup]="loginForm" (ngSubmit)="submit(loginForm)" #form>
+        <mat-form-field appearance="legacy">
+          <mat-label>请输入用户名</mat-label>
+          <input type="text" matInput [formControl]="username" />
+          <mat-error *ngIf="username.invalid">用户名不符合要求</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>请输入密码</mat-label>
+          <input type="password" matInput [formControl]="password" />
+          <mat-error *ngIf="password.invalid">密码不符合要求</mat-error>
+        </mat-form-field>
+        <mat-checkbox class="my-checkbox" [formControl]="isRemeberMe" (change)="change($event)">记住我</mat-checkbox>
+        <button mat-stroked-button color="accent" type="submit">提交</button>
+        <span>还没账号？去注册...<button mat-button>注册</button></span>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <mat-checkbox class="my-checkbox" [(ngModel)]="isRemeberMe">记住我</mat-checkbox> -->
+
+{{loginForm.value | json}}
+
+{{isRemeberMe.value}}
